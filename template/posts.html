@@ -1,0 +1,21 @@
+{%extends 'base.html' %}
+
+{%block title%} {{post.title}} {%endblock%}
+{% load markdown_helper %}
+{%block content%}
+     <div class="container mx-auto flex flex-wrap py-6">
+        <section class="w-3/4 items-center flex flex-col justify-center content-center p-8">
+            <div class="text-3xl font-bold hover:text-gray-700 pb-4">{{post.title | safe}}</div>
+            <a href="/cat/{{catId}}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{post.catId | safe}}</a>
+            <img class="h-64 w-auto m-4" src="{{post.imageUrl}}" alt="Blog-Url">
+            <div class="prose lg:prose-base">{{post.content | markdown | safe}}</div>
+        </section>
+        <aside class="w-full md:w-1/4 flex flex-col items-center px-3">
+            <p class="text-xl font-semibold pb-5">Related Blog</p>
+            <p class="pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis est eu odio sagittis tristique. Vestibulum ut finibus leo. In hac habitasse platea dictumst.</p>
+            <a href="/cat/{{p.catId}}" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">
+                Get More
+            </a>
+        </aside>
+     </div>
+{%endblock%}

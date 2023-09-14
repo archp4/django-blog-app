@@ -1,0 +1,47 @@
+{%extends 'base.html' %}
+
+{%block title%} {{selectCat.catId}} {%endblock%}
+
+{%block content%}
+    <div class="container mx-auto flex flex-wrap py-6 ">
+        <section class="w-full md:w-2/3 flex flex-col items-center px-3">
+            {%for p in posts %}
+                <!--Single post Card-->
+                <article class="flex flex-row min-w-full shadow my-4">
+                    <!-- Article Image -->
+                    <a href="/blog/{{p.postId}}" class="hover:opacity-75 w-1/4">
+                        <img class="min-w-full" src="{{p.imageUrl}}" alt="Blog-Image">
+                    </a>
+                    <div class="bg-white flex flex-col justify-start p-6 w-3/4">
+                        <!-- TYPE OF POST  -->
+                        <a href="/blog/{{p.postId}}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{p.catId | safe}}</a>
+                        <!-- Article TITLE -->
+                        <a href="/blog/{{p.postId}}" class="text-3xl font-bold hover:text-gray-700 pb-4">{{p.title | safe}}</a>
+                        <!-- Article DATE -->
+                        <p href="/blog/{{p.postId}}" class="text-sm pb-3">
+                            By <a href="#" class="font-semibold hover:text-gray-800">Arch Patel</a>, {{p.addDate | truncatewords:100 | safe}}
+                        </p>
+                        <!-- Article CONTENT -->
+                        <a href="/blog/{{p.postId}}" class="pb-6">{{p.description | truncatewords:100 | safe}}</a>
+                        <a href="/blog/{{p.postId}}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            {%endfor %}
+        </section>
+
+
+        <aside class="w-full md:w-1/3 flex flex-col items-center px-3">
+
+            <div class="w-full bg-white shadow flex flex-col my-4 p-6">
+                <p class="text-xl font-semibold pb-5">About Category</p>
+                <p class="pb-2 font-semibold">{{selectCat.title | safe}}</p>
+                <img class="min-w-full" src="/media/{{selectCat.image}}" alt="Blog-Image">
+                <p class="pb-2">{{selectCat.description | safe}}</p>
+<!--                <a href="/" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-4">-->
+<!--                    Back To Home-->
+<!--                </a>-->
+            </div>
+
+        </aside>
+    </div>
+{%endblock%}

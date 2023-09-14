@@ -1,0 +1,6 @@
+node_modules/
+blog/static/admin/
+blog/static/src/
+blog/static/fontawesome
+blog/static/js/
+blog/static/CACHE/
